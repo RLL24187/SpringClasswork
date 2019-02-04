@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 public class MakeWords{
   public static List<String> makeAllWords(int k, int maxLetter){
-    ArrayList L = new ArrayList(exp(maxLetter, k));
-    return helper(k, maxLetter, L);
+    ArrayList<String> L = new ArrayList(exp(maxLetter, k));
+    return helper(k, maxLetter, "", L);
   }
 
   //My own exponent function
@@ -11,6 +11,10 @@ public class MakeWords{
       return 1;
     }
     return exp(base*base, exp - 1);
+  }
+
+  private static void helper(int k, int maxLetter, String s, ArrayList<String> L){
+    
   }
 
 //makeAllWords(1,26) returns the list:
