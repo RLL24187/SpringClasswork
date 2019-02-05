@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 public class MakeWords{
   public static List<String> makeAllWords(int k, int maxLetter){
     ArrayList<String> L = new ArrayList(exp(maxLetter, k));
-    return helper(k, maxLetter, "", L);
+    helper(k, maxLetter, "", L);
+    return L;
   }
 
   //My own exponent function
@@ -14,7 +16,18 @@ public class MakeWords{
   }
 
   private static void helper(int k, int maxLetter, String s, ArrayList<String> L){
-    
+    //Base case: k == 0--> Add to the list
+    //System.out.println("k: "+k+", String: "+s);
+    if (k==0){
+      L.add(s);
+    }
+    //Otherwise, decrease k by 1 and call the recursive maxLetter times
+    //Loop through the alphabet to find the correct character
+    else{
+      for (int i = 0; i < maxLetter; i++){
+        helper(k-1, maxLetter, s+(char)(97+i), L); //Call the recursive on each letter
+      }
+    }
   }
 
 //makeAllWords(1,26) returns the list:
